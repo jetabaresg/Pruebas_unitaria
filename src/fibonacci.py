@@ -3,10 +3,12 @@ Módulo con el algoritmo de Fibonacci.
 ATENCIÓN: Hay 1 bug oculto en este archivo.
 """
 
+from functools import lru_cache
+
 def fibonacci_iterativo(n):
     """Calcula el n-ésimo número de Fibonacci de forma iterativa."""
     if n < 0:
-        raise ValueError("El índice no puede ser negativo")
+        return "El índice no puede ser negativo"
 
     if n == 0:
         return 0
@@ -20,10 +22,11 @@ def fibonacci_iterativo(n):
 
     return b
 
+@lru_cache(maxsize=None)
 def fibonacci_recursivo(n):
     """Calcula el n-ésimo número de Fibonacci de forma recursiva."""
     if n < 0:
-        raise ValueError("El índice no puede ser negativo")
+        return "El índice no puede ser negativo"
 
     if n == 0:
         return 0
@@ -37,7 +40,7 @@ def fibonacci_recursivo(n):
 def fibonacci_serie(n):
     """Genera una serie de Fibonacci hasta el n-ésimo término."""
     if n < 0:
-        raise ValueError("El índice no puede ser negativo")
+        return "El índice no puede ser negativo"
 
     if n == 0:
         return [0]

@@ -43,7 +43,7 @@ def es_palindromo(cadena):
         return False
 
     # BUG 1: No maneja espacios ni mayúsculas/minúsculas
-    cadena_limpia = cadena
+    cadena_limpia = cadena.lower().replace(" ", "")
     return cadena_limpia == cadena_limpia[::-1]
 
 def eliminar_duplicados(cadena):
@@ -94,7 +94,7 @@ def dividir_en_palabras(cadena):
         return []
 
     # BUG 2: No maneja múltiples espacios ni puntuación
-    return cadena.split(' ')
+    return cadena.split()
 
 def extraer_dominio(email):
     """Extrae el dominio de un email."""
