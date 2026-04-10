@@ -38,7 +38,6 @@ def csv_a_diccionarios(contenido_csv, tiene_cabecera=True):
         cabeceras = lineas[0]
         datos = lineas[1:]
 
-        # Soporta entradas donde cada fila llega como una sola columna separada por espacios.
         if len(cabeceras) == 1 and ',' not in cabeceras[0] and ' ' in cabeceras[0]:
             cabeceras = cabeceras[0].split()
 
@@ -48,7 +47,6 @@ def csv_a_diccionarios(contenido_csv, tiene_cabecera=True):
                 fila = fila[0].split()
 
             fila_dict = {}
-            # Rellena faltantes con cadena vacía e ignora columnas extra.
             for i, cabecera in enumerate(cabeceras):
                 fila_dict[cabecera] = fila[i] if i < len(fila) else ""
             resultado.append(fila_dict)

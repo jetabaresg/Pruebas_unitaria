@@ -5,6 +5,7 @@ ATENCIÓN: Hay 2 bugs ocultos en este archivo.
 
 import hashlib
 import re
+import secrets
 
 def hash_contraseña(contraseña):
     """Genera un hash SHA-256 de una contraseña."""
@@ -33,13 +34,9 @@ def validar_usuario(usuario):
 
     return True
 
-import hashlib
-import secrets
-
 def generar_token(usuario, timestamp):
     """Genera un token seguro con aleatoriedad."""
-    nonce = secrets.token_hex(16)  # aleatoriedad
-    
+    nonce = secrets.token_hex(16)
     datos = f"{usuario}:{timestamp}:{nonce}"
     
     return hashlib.sha256(datos.encode()).hexdigest()
@@ -75,8 +72,6 @@ def sanear_entrada(entrada):
     """Sanea una entrada de usuario para evitar inyección básica."""
     if not entrada:
         return ""
-
-    # Eliminar caracteres peligrosos
     entrada_limpia = entrada.replace("<", "").replace(">", "")
     entrada_limpia = entrada_limpia.replace("'", "").replace('"', "")
     entrada_limpia = entrada_limpia.replace(";", "").replace("--", "")
